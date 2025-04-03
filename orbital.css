@@ -1,0 +1,10 @@
+orbital_blast/
+├── src/
+│   ├── main.py
+│   └── game_logic.py
+├── assets/
+│   ├── images/
+│   └── sounds/
+├── build.bat
+└── README.md
+
