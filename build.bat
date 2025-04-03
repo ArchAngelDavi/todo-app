@@ -1,26 +1,17 @@
 @echo off
+setlocal
 
-REM Check for the platform argument
-IF "%1"=="" (
-    echo Usage: build.bat <platform>
-    echo Platforms: android, ios, web
+REM Check for Python installation
+python --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Python is not installed. Please install Python and add it to your PATH.
     exit /b
 )
 
-SET PLATFORM=%1
+REM Navigate to the src directory
+cd src
 
-IF "%PLATFORM%"=="android" (
-    echo Building for Android...
-    flutter build apk --release
-) ELSE IF "%PLATFORM%"=="ios" (
-    echo Building for iOS...
-    flutter build ios --release
-) ELSE IF "%PLATFORM%"=="web" (
-    echo Building for Web...
-    flutter build web --release
-) ELSE (
-    echo Invalid platform specified. Use: android, ios, or web.
-    exit /b
-)
+REM Run the game
+python main.py
 
-echo Build completed for %PLATFORM%.
+endlocal
